@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Be My Valentine ❤️</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      max-width: 350px;
+    }
+    h1 {
+      color: #e63946;
+    }
+    button {
+      padding: 12px 22px;
+      margin: 10px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #yesBtn {
+      background: #e63946;
+      color: white;
+    }
+    #noBtn {
+      background: #adb5bd;
+      color: white;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 15px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card" id="card">
+    <h1>Ashwika, will you be my Valentine? 💖</h1>
+    <button id="yesBtn">Yes 💕</button>
+    <button id="noBtn">No 🙈</button>
+  </div>
+
+  <script>
+    const noQuestions = [
+      { text: "Are you sure, Ashwika? 🥺", gif: "https://media.giphy.com/media/l0HlOvJ7yaacpuSas/giphy.gif" },
+      { text: "Really really sure? 😢", gif: "https://media.giphy.com/media/OPU6wzx8JrHna/giphy.gif" },
+      { text: "What if I promise chocolates? 🍫", gif: "https://media.giphy.com/media/26BRv0ThflsHCqDrG/giphy.gif" },
+      { text: "What if I add flowers too? 🌹", gif: "https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" },
+      { text: "My heart is melting here 💔", gif: "https://media.giphy.com/media/3o6wrvdHFbwBrUFenu/giphy.gif" }
+    ];
+
+    let noCount = 0;
+
+    document.getElementById('noBtn').addEventListener('click', () => {
+      const card = document.getElementById('card');
+      if (noCount < noQuestions.length) {
+        card.innerHTML = `
+          <h1>${noQuestions[noCount]}</h1>
+          <img src="https://media.giphy.com/media/ROF8OQvDmxytW/giphy.gif" alt="Sad Gif" />
+          <br />
+          <button id="yesBtn">Yes 💕</button>
+          <button id="noBtn">No 🙈</button>
+        `;
+        noCount++;
+        attachListeners();
+      } else {
+        card.innerHTML = `
+          <h1>Okay… I’ll still wait ❤️</h1>
+          <img src="https://media.giphy.com/media/3o6wrvdHFbwBrUFenu/giphy.gif" alt="Waiting Gif" />
+          <br />
+          <button id="yesBtn">Yes 💕</button>
+        `;
+        attachListeners();
+      }
+    });
+
+    function attachListeners() {
+      document.getElementById('yesBtn')?.addEventListener('click', () => {
+        document.getElementById('card').innerHTML = `
+          <h1>Yayyy!!! 💘🥰</h1>
+          <p>Ashwika, you just made me the happiest person 💞</p>
+          <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" alt="Love Gif" />
+        `;
+      });
+      document.getElementById('noBtn')?.addEventListener('click', () => {
+        document.getElementById('noBtn').click();
+      });
+    }
+
+    document.getElementById('yesBtn').addEventListener('click', () => {
+      document.getElementById('card').innerHTML = `
+        <h1>Yayyy!!! 💘🥰</h1>
+        <p>Ashwika, you just made me the happiest person 💞</p>
+        <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" alt="Love Gif" />
+      `;
+    });
+  </script>
+</body>
+</html>
